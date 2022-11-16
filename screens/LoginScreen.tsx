@@ -1,14 +1,15 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import LoginForm from "../components/screens/Login/LoginForm";
+import LoginForm from "../components/screens/Login/components/LoginForm";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { MAIN_COLOR } from "../constants/colors";
 
 function LoginScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.logoContainer}>
-          <Ionicons name="ios-logo-react" color={"#e0337a"} size={40} />
+          <Ionicons name="ios-logo-react" color={MAIN_COLOR} size={40} />
         </View>
 
         <Text style={styles.heading}>login</Text>

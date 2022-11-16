@@ -6,6 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import FavoriteScreen from "../screens/FavoriteScreen";
+import { MAIN_COLOR } from "../constants/colors";
 
 const RootStackNavigator = createNativeStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -17,7 +18,7 @@ function MainTabNavigator() {
         return {
           headerTitle: () => {
             return (
-              <Ionicons name="ios-logo-react" color={"#e0337a"} size={40} />
+              <Ionicons name="ios-logo-react" color={MAIN_COLOR} size={40} />
             );
           },
           tabBarIcon: ({ size, focused, color }) => {
@@ -36,7 +37,7 @@ function MainTabNavigator() {
 
             return <Ionicons size={size} name={iconName} color={color} />;
           },
-          tabBarActiveTintColor: "#e0337a",
+          tabBarActiveTintColor: MAIN_COLOR,
           tabBarLabelStyle: {
             fontSize: 12,
             fontWeight: "600",

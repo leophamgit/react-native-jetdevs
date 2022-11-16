@@ -2,7 +2,8 @@ import { useForm, UseFormReturn, FormProvider } from "react-hook-form";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import FontistoIcon from "react-native-vector-icons/Fontisto";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import FormInput from "../../../FormInput";
+import { MAIN_COLOR } from "../../../../../constants/colors";
+import FormInput from "../../../../FormInput";
 
 interface ILoginFormValues {
   email: string;
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   activeButton: {
-    backgroundColor: "#e0337a",
+    backgroundColor: MAIN_COLOR,
   },
   disabledSubmitButton: {
     backgroundColor: "#d7d9e0",
