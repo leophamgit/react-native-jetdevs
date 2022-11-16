@@ -1,11 +1,25 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { View, SafeAreaView, FlatList } from "react-native";
+import UserItem from "../components/screens/Favorite/components/UserItem";
+import { IUser } from "../types/user";
+
+const { results: userData } = require("../mockData.json");
 
 function FavoriteScreen() {
+  const renderUserItem = ({ item }: { item: IUser }) => {
+    return <UserItem user={item} />;
+  };
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Favorite Screen</Text>
-    </View>
+    <SafeAreaView>
+      <View>
+        <FlatList
+          data={userData}
+          renderItem={renderUserItem}
+          keyExtractor={(user) => user?.login?.uuid}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
