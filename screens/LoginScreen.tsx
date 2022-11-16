@@ -1,14 +1,14 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import LoginForm from "../components/screens/Login/LoginForm";
-import AntDesignIcon from "react-native-vector-icons/AntDesign";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 function LoginScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.logoContainer}>
-          <AntDesignIcon name="star" color={"#e0337a"} size={40} />
+          <Ionicons name="ios-logo-react" color={"#e0337a"} size={40} />
         </View>
 
         <Text style={styles.heading}>login</Text>
