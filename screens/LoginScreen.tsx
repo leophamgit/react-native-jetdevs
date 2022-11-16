@@ -1,17 +1,73 @@
 import * as React from "react";
-import { View, Text } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { View, Text, StyleSheet } from "react-native";
 import LoginForm from "../components/screens/Login/LoginForm";
+import AntDesignIcon from "react-native-vector-icons/AntDesign";
 
 function LoginScreen() {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Login Screen</Text>
-      <Icon name="rocket" size={30} color="#900" />
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <View style={styles.logoContainer}>
+          <AntDesignIcon name="star" color={"#e0337a"} size={40} />
+        </View>
 
-      <LoginForm />
+        <Text style={styles.heading}>login</Text>
+        <View style={styles.formContainer}>
+          <LoginForm />
+        </View>
+      </View>
     </View>
   );
 }
 
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 120,
+    paddingHorizontal: 20,
+    backgroundColor: "#f6f6fb",
+  },
+  content: {
+    display: "flex",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+    borderRadius: 10,
+    position: "relative",
+  },
+  logoContainer: {
+    height: 70,
+    width: 70,
+    backgroundColor: "white",
+    borderRadius: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: -30,
+  },
+  heading: {
+    textTransform: "uppercase",
+    fontSize: 30,
+    fontWeight: "bold",
+    marginBottom: 100,
+  },
+  formContainer: {
+    alignSelf: "stretch",
+    paddingHorizontal: 30,
+  },
+});

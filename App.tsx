@@ -12,8 +12,12 @@ function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
+        <RootStack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
         <RootStack.Screen name="Home" component={HomeScreen} />
-        <RootStack.Screen name="Login" component={LoginScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
