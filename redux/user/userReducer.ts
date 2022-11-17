@@ -15,14 +15,29 @@ const initialState: IUserState = {
 
 export const fetchUsersAsync = createAsyncThunk("user/fetchUser", async () => {
   const response = await fetchUsers();
-  console.log({ response });
   return response?.data;
 });
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleFavorite: (state, action) => {
+      const userId: string = action?.payload;
+      const users: IUser[] = [...state.value];
+      const foundUserIndex: number = users.findIndex(
+        (user) => user?.login?.uuid === userId
+      );
+      const foundUser: IUser = users[foundUserIndex];
+
+      users[foundUserIndex] = {
+        ...foundUser,
+        isFavorite: !foundUser?.isFavorite,
+      };
+
+      state.value = users;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsersAsync.pending, (state) => {
@@ -35,6 +50,7 @@ export const userSlice = createSlice({
   },
 });
 
+export const { toggleFavorite } = userSlice.actions;
 export const selectUser = (state: IRootState) => state.user;
 
 export default userSlice.reducer;

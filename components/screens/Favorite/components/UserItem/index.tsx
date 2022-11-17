@@ -7,14 +7,22 @@ import { Avatar } from "react-native-paper";
 import { MAIN_COLOR } from "../../../../../constants/colors";
 import { IUser } from "../../../../../types/user";
 import { getFullName } from "../../../../../utils";
+import { toggleFavorite } from "../../../../../redux/user/userReducer";
+import { useDispatch } from "react-redux";
 
 interface IUserItemProps {
   user: IUser;
 }
 
 function UserItem({ user }: IUserItemProps) {
-  const { name, picture } = user;
+  const { name, picture, isFavorite } = user;
+  const dispatch = useDispatch();
+
   const fullName: string = getFullName(name?.first, name?.last);
+
+  function handleToggleFavorite(): void {
+    dispatch(toggleFavorite(user?.login?.uuid));
+  }
 
   return (
     <View style={styles.container}>
@@ -27,8 +35,12 @@ function UserItem({ user }: IUserItemProps) {
         />
         <Text style={styles.fullName}>{fullName}</Text>
       </View>
-      <TouchableOpacity>
-        <Ionicons name="star-outline" size={20} color={MAIN_COLOR} />
+      <TouchableOpacity onPress={handleToggleFavorite}>
+        <Ionicons
+          name={`star${!isFavorite ? "-outline" : ""}`}
+          size={20}
+          color={MAIN_COLOR}
+        />
       </TouchableOpacity>
     </View>
   );

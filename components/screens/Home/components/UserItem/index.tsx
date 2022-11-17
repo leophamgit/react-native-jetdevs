@@ -8,15 +8,22 @@ import { Avatar } from "react-native-paper";
 import { MAIN_COLOR } from "../../../../../constants/colors";
 import { IUser } from "../../../../../types/user";
 import { getFullName } from "../../../../../utils";
+import { useDispatch } from "react-redux";
+import { toggleFavorite } from "../../../../../redux/user/userReducer";
 
 interface IUserItemProps {
   user: IUser;
 }
 
 function UserItem({ user }: IUserItemProps) {
-  const { name, location, picture } = user;
+  const { name, location, picture, isFavorite } = user;
+  const dispatch = useDispatch();
   const fullName: string = getFullName(name?.first, name?.last);
   const address: string = `${location?.city ?? ""}, ${location?.state ?? ""}`;
+
+  function handleToggleFavorite(): void {
+    dispatch(toggleFavorite(user?.login?.uuid));
+  }
 
   return (
     <View style={styles.container}>
@@ -35,8 +42,12 @@ function UserItem({ user }: IUserItemProps) {
             <Text style={styles.address}>{address}</Text>
           </View>
         </View>
-        <TouchableOpacity>
-          <Ionicons name="star-outline" size={20} color={MAIN_COLOR} />
+        <TouchableOpacity onPress={handleToggleFavorite}>
+          <Ionicons
+            name={`star${!isFavorite ? "-outline" : ""}`}
+            size={20}
+            color={MAIN_COLOR}
+          />
         </TouchableOpacity>
       </View>
     </View>

@@ -72,7 +72,7 @@ function RootNavigation() {
         headerShown: false,
       }}
     >
-      {/* <RootStackNavigator.Screen name="Login" component={LoginScreen} /> */}
+      <RootStackNavigator.Screen name="Login" component={LoginScreen} />
       <RootStackNavigator.Screen name="Main" component={MainTabNavigator} />
     </RootStackNavigator.Navigator>
   );
