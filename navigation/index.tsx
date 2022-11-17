@@ -7,11 +7,15 @@ import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import { MAIN_COLOR } from "../constants/colors";
+import { Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const RootStackNavigator = createNativeStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
 
 function MainTabNavigator() {
+  const navigation = useNavigation();
+
   return (
     <BottomTabNavigator.Navigator
       screenOptions={({ route }) => {
@@ -19,6 +23,16 @@ function MainTabNavigator() {
           headerTitle: () => {
             return (
               <Ionicons name="ios-logo-react" color={MAIN_COLOR} size={40} />
+            );
+          },
+          headerRight: () => {
+            return (
+              <Button
+                title="Log out"
+                onPress={() => {
+                  navigation.navigate("Login");
+                }}
+              />
             );
           },
           tabBarIcon: ({ size, focused, color }) => {
@@ -58,7 +72,7 @@ function RootNavigation() {
         headerShown: false,
       }}
     >
-      {/* <RootStackNavigator.Screen name="Login" component={LoginScreen} /> */}
+      <RootStackNavigator.Screen name="Login" component={LoginScreen} />
       <RootStackNavigator.Screen name="Main" component={MainTabNavigator} />
     </RootStackNavigator.Navigator>
   );
