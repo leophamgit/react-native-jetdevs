@@ -41,10 +41,6 @@ project.xcworkspace
 
 # macOS
 .DS_Store
-ios/
-ios/*
-ios/main.jsbundle
-ios/**/*
 android/
 android/*
 android/**/*

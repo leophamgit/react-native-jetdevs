@@ -9,13 +9,10 @@ yarn install
 ```
 
 2. start project
-* run with ios
+
+- run with ios
 
 ```
+yarn pod
 yarn ios
-```
-* run with android
-
-```
-yarn android
 ```
