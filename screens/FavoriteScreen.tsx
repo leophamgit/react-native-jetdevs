@@ -1,11 +1,13 @@
 import * as React from "react";
 import { View, SafeAreaView, FlatList } from "react-native";
+import { useSelector } from "react-redux";
 import UserItem from "../components/screens/Favorite/components/UserItem";
+import { selectUser } from "../redux/user/userReducer";
 import { IUser } from "../types/user";
 
-const { results: userData } = require("../mockData.json");
-
 function FavoriteScreen() {
+  const { value: users } = useSelector(selectUser);
+
   const renderUserItem = ({ item }: { item: IUser }) => {
     return <UserItem user={item} />;
   };
@@ -14,7 +16,7 @@ function FavoriteScreen() {
     <SafeAreaView>
       <View>
         <FlatList
-          data={userData}
+          data={users}
           renderItem={renderUserItem}
           keyExtractor={(user) => user?.login?.uuid}
         />
